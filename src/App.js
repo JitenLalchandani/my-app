@@ -1,24 +1,48 @@
-import logo from './logo.svg';
+
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <nav className="navbar">
+        <div className="container-fluid">
+          <a className="navbar-brand" href="/">Navbar</a>
+          <button
+            className="btn-icon navbar-toggler"
+            type="button"
+            aria-label="Toggle navigation"
+          >
+            <span className="navbar-toggler-icon" aria-hidden="true"></span>
+          </button>
+
+          <div className="drawer-body">
+            <ul className="nav navbar-nav me-auto">
+              <li className="nav-item">
+                <a className="nav-link active" aria-current="page" href="/">
+                  Home
+                </a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="/">
+                  Link
+                </a>
+              </li>
+              <li className="nav-item">
+                <button className="nav-link" type="button" aria-expanded="false">
+                  Menu
+                </button>
+                <div className="menu">
+                  <a className="menu-item" href="/">Action</a>
+                  <a className="menu-item" href="/">Another action</a>
+                  <hr className="menu-divider" />
+                  <a className="menu-item" href="/">Something else here</a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </>
   );
 }
 
