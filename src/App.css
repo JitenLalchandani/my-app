@@ -17,6 +17,7 @@ body {
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
+  flex-wrap: nowrap;
 }
 
 .navbar-brand {
@@ -25,6 +26,7 @@ body {
   font-size: 1.5rem;
   font-weight: 700;
   letter-spacing: 0.04em;
+  white-space: nowrap;
 }
 
 .navbar-toggler {
@@ -39,6 +41,8 @@ body {
 .navbar-nav {
   display: flex;
   align-items: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
   gap: 0.5rem;
   list-style: none;
   margin: 0;
@@ -47,6 +51,7 @@ body {
 
 .nav-item {
   position: relative;
+  white-space: nowrap;
 }
 
 .nav-link,
