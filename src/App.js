@@ -1,47 +1,13 @@
-
 import './App.css';
-
+import TextForm from './components/TextForm';
+import Navbar from './components/Navbar';
 function App() {
   return (
     <>
-      <nav className="navbar">
-        <div className="container-fluid">
-          <a className="navbar-brand" href="/">Navbar</a>
-          <button
-            className="btn-icon navbar-toggler"
-            type="button"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon" aria-hidden="true"></span>
-          </button>
-
-          <div className="drawer-body">
-            <ul className="nav navbar-nav me-auto">
-              <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="/">
-                  Home
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="/">
-                  Link
-                </a>
-              </li>
-              <li className="nav-item">
-                <button className="nav-link" type="button" aria-expanded="false">
-                  Menu
-                </button>
-                <div className="menu">
-                  <a className="menu-item" href="/">Action</a>
-                  <a className="menu-item" href="/">Another action</a>
-                  <hr className="menu-divider" />
-                  <a className="menu-item" href="/">Something else here</a>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
+      <Navbar brandName="My App"/>
+      <div className="container my-3">
+        <TextForm heading="Login" subheading="Please enter your credentials" />
+      </div>
     </>
   );
 }
