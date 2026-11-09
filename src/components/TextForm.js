@@ -1,87 +1,93 @@
 import React, { useState } from "react";
-export default function TextForm({ heading, subheading }) {
+
+export default function TextForm({ heading, subheading, mode }) {
   const [text, setText] = useState("");
+
   const convertToUpperCase = () => {
-    const upperText = text.toUpperCase();
-    setText(upperText);
+    setText((prev) => prev.toUpperCase());
   };
+
   const convertToLower = () => {
-    const lowerText = text.toLowerCase();
-    setText(lowerText);
+    setText((prev) => prev.toLowerCase());
   };
+
   const clearText = () => {
-    const clearText = (' ');
-    setText(clearText);
+    setText("");
   };
-  const removeExtraSpaces = () =>{
-    let newText = text.split(/[ ]+/);
-    setText(newText.join(" "));
-  }
-  const handleCopy = () =>{
-    var text=document.getElementById("exampleInputEmail1");
-    text.select();
-    navigator.clipboard.writeText(text.value);
-  }
+
+  const removeExtraSpaces = () => {
+    const newText = text.split(/\s+/).filter(Boolean).join(" ");
+    setText(newText);
+  };
+
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(text);
+    } catch (err) {
+      console.error("Copy failed", err);
+    }
+  };
+
   return (
-    <>
-      <form>
-        <h2>{heading}</h2>
-        <p>{subheading}</p>
+    <div className="text-app-shell" style={{backgroundColor:mode==="dark"?"#111827":"#ffffff", color:mode==="dark"?"white":"black"}}>
+      <form className="text-form-card">
+        <div className="form-header">
+          <h2>{heading}</h2>
+          <p>{subheading}</p>
+        </div>
+
         <div className="mb-3">
           <label htmlFor="exampleInputEmail1" className="form-label">
             Enter Text here
           </label>
           <textarea
-            className="form-control mx-3"
+            className="text-form-control"
             id="exampleInputEmail1"
             aria-describedby="emailHelp"
             value={text}
             onChange={(e) => setText(e.target.value)}
           />
         </div>
-        <button
-          type="button"
-          onClick={convertToUpperCase}
-          className="btn btn-primary mx-3"
-        >
-          Convert to Upper Case
-        </button>
-        <button
-          type="button"
-          onClick={convertToLower}
-          className="btn btn-primary mx-3"
-        >
-          Convert to Lower Case
-        </button>
-        <button
-          type="button"
-          onClick={clearText}
-          className="btn btn-primary mx-3"
-        >
-          Clear Text
-        </button>
-        <button
-          type="button"
-          onClick={removeExtraSpaces}
-          className="btn btn-primary mx-3 my-3"
-        >
-          Remove Extra Spaces
-        </button>
-        <button
-          type="button"
-          onClick={handleCopy}
-          className="btn btn-primary mx-3 my-3"
-        >
-          Copy Text
-        </button>
+
+        <div className="action-grid">
+          <button type="button" onClick={convertToUpperCase} className="action-btn primary">
+            Upper Case
+          </button>
+          <button type="button" onClick={convertToLower} className="action-btn secondary">
+            Lower Case
+          </button>
+          <button type="button" onClick={clearText} className="action-btn muted">
+            Clear
+          </button>
+          <button type="button" onClick={removeExtraSpaces} className="action-btn accent">
+            Remove Spaces
+          </button>
+          <button type="button" onClick={handleCopy} className="action-btn success">
+            Copy Text
+          </button>
+        </div>
       </form>
-      <div className="container my-3">
+
+      <div className="summary-card">
         <h2>Your text summary</h2>
-        <p>{text.split(" ").length} words and {text.length} characters</p>
-        <p>{0.008 * text.split(" ").length} Minutes read</p>
-        <h2>Preview</h2>
-        <p>{text}</p> 
+        <div className="summary-stats">
+          <div className="stat-box">
+            <span className="stat-label">Words</span>
+            <strong>{text.trim() ? text.split(/\s+/).length : 0}</strong>
+          </div>
+          <div className="stat-box">
+            <span className="stat-label">Characters</span>
+            <strong>{text.length}</strong>
+          </div>
+          <div className="stat-box">
+            <span className="stat-label">Minutes Read</span>
+            <strong>{text.trim() ? (text.split(/\s+/).length * 0.008).toFixed(2) : "0.00"}</strong>
+          </div>
+        </div>
+
+        <h3>Preview</h3>
+        <div className="preview-box">{text || "Your text will appear here..."}</div>
       </div>
-    </>
+    </div>
   );
 }
