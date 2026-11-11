@@ -1,30 +1,61 @@
 import React, { useState } from "react";
 
-export default function TextForm({ heading, subheading, mode }) {
+export default function TextForm({ heading, subheading, mode, showAlert }) {
   const [text, setText] = useState("");
 
   const convertToUpperCase = () => {
+    if (!text.trim()) {
+      showAlert("Please enter some text first!", "warning");
+      return;
+    }
+
     setText((prev) => prev.toUpperCase());
+    showAlert("Converted to uppercase.", "success");
   };
 
   const convertToLower = () => {
+    if (!text.trim()) {
+      showAlert("Please enter some text first!", "warning");
+      return;
+    }
+
     setText((prev) => prev.toLowerCase());
+    showAlert("Converted to lowercase.", "success");
   };
 
   const clearText = () => {
+    if (!text.trim()) {
+      showAlert("Text is already empty.", "warning");
+      return;
+    }
+
     setText("");
+    showAlert("Text cleared.", "success");
   };
 
   const removeExtraSpaces = () => {
+    if (!text.trim()) {
+      showAlert("Please enter some text first!", "warning");
+      return;
+    }
+
     const newText = text.split(/\s+/).filter(Boolean).join(" ");
     setText(newText);
+    showAlert("Extra spaces removed.", "success");
   };
 
   const handleCopy = async () => {
+    if (!text.trim()) {
+      showAlert("Nothing to copy.", "warning");
+      return;
+    }
+
     try {
       await navigator.clipboard.writeText(text);
+      showAlert("Text copied to clipboard.", "success");
     } catch (err) {
       console.error("Copy failed", err);
+      showAlert("Failed to copy text.", "danger");
     }
   };
 

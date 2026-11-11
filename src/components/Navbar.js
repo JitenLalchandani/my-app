@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 export default function Navbar({ brandName, mode, toggleMode }) {
   const isDarkMode = mode === "dark";
@@ -7,9 +8,9 @@ export default function Navbar({ brandName, mode, toggleMode }) {
   return (
     <nav className={`navbar navbar-expand-lg ${isDarkMode ? "navbar-dark" : "navbar-light"}`}>
       <div className="container-fluid">
-        <a className="navbar-brand" href="/">
+        <Link className="navbar-brand" href="/">
           {brandName}
-        </a>
+        </Link>
         <button
           className="btn-icon navbar-toggler"
           type="button"
@@ -20,30 +21,30 @@ export default function Navbar({ brandName, mode, toggleMode }) {
         <div className="drawer-body">
           <ul className="nav navbar-nav me-auto">
             <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="/">
+              <Link className="nav-link active" aria-current="page" to="/">
                 Home
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/">
+              <Link className="nav-link" to="/">
                 Link
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
               <button className="nav-link" type="button" aria-expanded="false">
                 Menu
               </button>
               <div className="menu">
-                <a className="menu-item" href="/">
+                <Link className="menu-item" to="/">
                   Action
-                </a>
-                <a className="menu-item" href="/">
+                </Link>
+                <Link className="menu-item" to="/">
                   Another action
-                </a>
+                </Link>
                 <hr className="menu-divider" />
-                <a className="menu-item" href="/">
+                <Link className="menu-item" to="/">
                   Something else here
-                </a>
+                </Link>
               </div>
             </li>
           </ul>

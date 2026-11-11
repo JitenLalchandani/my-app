@@ -3,6 +3,17 @@
   transition: background 0.3s ease, color 0.3s ease;
 }
 
+.btn-success,
+.btn-primary,
+.btn-danger,
+.btn-info {
+  color: #ffffff !important;
+}
+
+.btn-warning {
+  color: #111827 !important;
+}
+
 .app-light {
   background: linear-gradient(135deg, #eff6ff 0%, #f8fafc 40%, #eef2ff 100%);
   color: #1f2937;
@@ -13,15 +24,18 @@
   color: #f8fafc;
 }
 
+html, body, #root {
+    min-height: 100%;
+    width: 100%;
+    margin: 0;
+}
+
 body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  background: transparent;
-  color: inherit;
+    min-height: 100vh;
 }
 
 #root {
-  min-height: 100vh;
+    min-height: 100vh;
 }
 
 .text-app-shell {
