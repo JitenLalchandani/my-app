@@ -15,12 +15,12 @@
 }
 
 .app-light {
-  background: linear-gradient(135deg, #eff6ff 0%, #f8fafc 40%, #eef2ff 100%);
+  background: #ffffff;
   color: #1f2937;
 }
 
 .app-dark {
-  background: linear-gradient(135deg, #0f172a 0%, #111827 45%, #1f2937 100%);
+  background: #042743;
   color: #f8fafc;
 }
 
@@ -159,8 +159,9 @@ body {
 .summary-stats {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 12px;
+  gap: 16px;
   margin: 18px 0 22px;
+  align-items: stretch;
 }
 
 .stat-box {
@@ -169,6 +170,10 @@ body {
   border-radius: 14px;
   padding: 14px 12px;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 90px;
 }
 
 .stat-label {
@@ -405,4 +410,10 @@ body {
   .summary-card {
     padding: 20px;
   }
+}
+#first{
+  width:100px;
+}
+.stat-box{
+  gap:6px;
 }

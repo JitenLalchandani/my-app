@@ -49,7 +49,7 @@ export default function TextForm({ heading, subheading, mode, showAlert }) {
       showAlert("Nothing to copy.", "warning");
       return;
     }
-
+    document.getSelection().removeAllRanges();
     try {
       await navigator.clipboard.writeText(text);
       showAlert("Text copied to clipboard.", "success");
@@ -81,19 +81,19 @@ export default function TextForm({ heading, subheading, mode, showAlert }) {
         </div>
 
         <div className="action-grid">
-          <button type="button" onClick={convertToUpperCase} className="action-btn primary">
+          <button disabled ={text.length===0} type="button" onClick={convertToUpperCase} className="action-btn primary">
             Upper Case
           </button>
-          <button type="button" onClick={convertToLower} className="action-btn secondary">
+          <button disabled ={text.length===0} type="button" onClick={convertToLower} className="action-btn secondary">
             Lower Case
           </button>
-          <button type="button" onClick={clearText} className="action-btn muted">
+          <button disabled ={text.length===0} type="button" onClick={clearText} className="action-btn muted">
             Clear
           </button>
-          <button type="button" onClick={removeExtraSpaces} className="action-btn accent">
+          <button disabled ={text.length===0} type="button" onClick={removeExtraSpaces} className="action-btn accent">
             Remove Spaces
           </button>
-          <button type="button" onClick={handleCopy} className="action-btn success">
+          <button disabled ={text.length===0} type="button" onClick={handleCopy} className="action-btn success">
             Copy Text
           </button>
         </div>
@@ -106,11 +106,11 @@ export default function TextForm({ heading, subheading, mode, showAlert }) {
             <span className="stat-label">Words</span>
             <strong>{text.trim() ? text.split(/\s+/).length : 0}</strong>
           </div>
-          <div className="stat-box">
+          <div id ="first"className="stat-box">
             <span className="stat-label">Characters</span>
             <strong>{text.length}</strong>
           </div>
-          <div className="stat-box">
+          <div id="second"className="stat-box">
             <span className="stat-label">Minutes Read</span>
             <strong>{text.trim() ? (text.split(/\s+/).length * 0.008).toFixed(2) : "0.00"}</strong>
           </div>

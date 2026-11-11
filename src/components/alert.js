@@ -15,6 +15,7 @@ export default function Alert(props) {
   const capitalizedType = capitalize(alert.type);
 
   return (
+    <div style={{height:'50px'}}>
     <div
       className={`alert alert-${alert.type} alert-dismissible fade show custom-alert`}
       role="alert"
@@ -28,13 +29,14 @@ export default function Alert(props) {
         padding: '12px 16px',
       }}
     >
-      <strong>{capitalizedType}</strong>: {alert.msg}
+      <strong>{capitalizedType}</strong>: {alert.msg} 
       <button
         type="button"
         className="btn-close ms-auto"
         data-bs-dismiss="alert"
         aria-label="Close"
       ></button>
+    </div>
     </div>
   );
 }

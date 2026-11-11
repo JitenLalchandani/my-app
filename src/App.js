@@ -9,8 +9,6 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   const [mode, setMode] = useState("light");
-  const [pageColor, setPageColor] = useState("#eff6ff");
-  const [title, setTitle] = useState("My App-Home");
   const [alert, setAlert] = useState({
     msg: "Something’s wrong, check the fields below and try again.",
     type: "danger",
@@ -33,18 +31,16 @@ function App() {
   const toggleMode = () => {
     setMode((prevMode) => (prevMode === "light" ? "dark" : "light"));
     document.title = "My App-" + (mode === "light" ? "Dark" : "Light");
-    setTitle((prevTitle) => {
-      return prevTitle === "My App-Home" ? "My App-Dark" : "My App-Light";
-    });
   };
 
   return (
     <>
       <Router>
-        <div>{title}</div>
         <div
           className={mode === "dark" ? "app app-dark" : "app app-light"}
-          style={{ background: pageColor }}
+          style={{
+            background: mode === "dark" ? "#000000" : "#ffffff",
+          }}
         >
           <Navbar brandName="My App" mode={mode} toggleMode={toggleMode} />
           <Alert alert={alert} />
@@ -63,7 +59,7 @@ function App() {
                 }
               />
             </Routes>
-            <DarkMode setPageColor={setPageColor} />
+            <DarkMode />
           </div>
         </div>
       </Router>
