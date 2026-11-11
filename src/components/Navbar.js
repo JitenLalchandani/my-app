@@ -8,7 +8,7 @@ export default function Navbar({ brandName, mode, toggleMode }) {
   return (
     <nav className={`navbar navbar-expand-lg ${isDarkMode ? "navbar-dark" : "navbar-light"}`}>
       <div className="container-fluid">
-        <Link className="navbar-brand" href="/">
+        <Link className="navbar-brand" to="/">
           {brandName}
         </Link>
         <button
@@ -21,7 +21,7 @@ export default function Navbar({ brandName, mode, toggleMode }) {
         <div className="drawer-body">
           <ul className="nav navbar-nav me-auto">
             <li className="nav-item">
-              <Link className="nav-link active" aria-current="page" to="/">
+              <Link className="nav-link" aria-current="page" to="/">
                 Home
               </Link>
             </li>
@@ -31,7 +31,7 @@ export default function Navbar({ brandName, mode, toggleMode }) {
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/abouts">
+              <Link className="nav-link" to="/about">
                 About
               </Link>
             </li>
