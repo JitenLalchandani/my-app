@@ -417,3 +417,6 @@ body {
 .stat-box{
   gap:6px;
 }
+.accordian-button::after{
+  filter:invert(1);
+}

@@ -31,21 +31,9 @@ export default function Navbar({ brandName, mode, toggleMode }) {
               </Link>
             </li>
             <li className="nav-item">
-              <button className="nav-link" type="button" aria-expanded="false">
-                Menu
-              </button>
-              <div className="menu">
-                <Link className="menu-item" to="/">
-                  Action
-                </Link>
-                <Link className="menu-item" to="/">
-                  Another action
-                </Link>
-                <hr className="menu-divider" />
-                <Link className="menu-item" to="/">
-                  Something else here
-                </Link>
-              </div>
+              <Link className="nav-link" to="/abouts">
+                About
+              </Link>
             </li>
           </ul>
         </div>
